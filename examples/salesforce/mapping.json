@@ -1,0 +1,63 @@
+{
+  "programmes": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Jurisdiction": "jurisdiction",
+    "Owner": "owner",
+    "Review On": "review_on"
+  },
+  "benefits": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Programme Id": "programme_id",
+    "Unit": "unit",
+    "Target Units": "target_units"
+  },
+  "participants": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Owner": "owner",
+    "Retention Review On": "retention_review_on",
+    "Accuracy Checked On": "accuracy_checked_on"
+  },
+  "enrolments": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Programme Id": "programme_id",
+    "Participant Id": "participant_id",
+    "Starts On": "starts_on"
+  },
+  "sessions": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Benefit Id": "benefit_id",
+    "Scheduled On": "scheduled_on",
+    "Capacity Units": "capacity_units",
+    "Owner": "owner"
+  },
+  "deliveries": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Enrolment Id": "enrolment_id",
+    "Session Id": "session_id",
+    "Delivered On": "delivered_on",
+    "Units": "units",
+    "Evidence": "evidence",
+    "Retain Until": "retain_until"
+  },
+  "milestones": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Programme Id": "programme_id",
+    "Due On": "due_on",
+    "Owner": "owner"
+  },
+  "notes": {
+    "Record ID": "source_id",
+    "Name": "name",
+    "Programme Id": "programme_id",
+    "Recorded On": "recorded_on",
+    "Summary": "summary",
+    "Owner": "owner"
+  }
+}

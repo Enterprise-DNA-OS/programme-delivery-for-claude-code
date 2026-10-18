@@ -1,0 +1,36 @@
+{
+  "captured_at": "2026-10-18T02:33:43.464Z",
+  "fixture": "supabase/seed.sql (fictional records)",
+  "screens": [
+    {
+      "title": "Benefit capacity",
+      "ask": "Which benefits need more capacity?",
+      "command": "npm run programmes -- benefit-capacity",
+      "output": "  source id  programme         benefit                unit        target units  delivered units  future capacity units  unplanned units\n  ---------  ----------------  ---------------------  ----------  ------------  ---------------  ---------------------  ---------------\n  ben13      Community pantry  Pantry delivery route  deliveries  40.00         0                0                      40.00          \n  ben11      Community pantry  Pantry parcels         parcels     160.00        5.00             25.00                  130.00         \n  ben12      Repair and reuse  Repair sessions        hours       80.00         4.00             10.00                  66.00"
+    },
+    {
+      "title": "Weekly attention",
+      "ask": "Which programme work needs attention today?",
+      "command": "npm run programmes -- attention",
+      "output": "  source id  item                            issue                           owner  due on    \n  ---------  ------------------------------  ------------------------------  -----  ----------\n  ses41      Monday pantry                   Session needs reconciliation    Mara   2026-10-11\n  pro1       Community pantry                Programme review overdue        Mara   2026-10-14\n  mil61      Pantry quarterly funder report  Funder report overdue           Mara   2026-10-15\n  ses45      Delivery route                  Session needs reconciliation    Mara   2026-10-16\n  par24      Participant D                   No recorded benefit in 30 days  Tess   2026-10-18"
+    },
+    {
+      "title": "Evidence review",
+      "ask": "Which retention and accuracy records need checking?",
+      "command": "npm run programmes -- compliance",
+      "output": "  source id  rule               finding                                                             \n  ---------  -----------------  --------------------------------------------------------------------\n  del53      ACNC-7Y            Delivery retention date precedes seven-year minimum                 \n  par21      PRIVACY-ACCURACY   Review personal record accuracy (90-day internal reminder)          \n  par23      PRIVACY-RETENTION  Review continued need and applicable legal holds; do not auto-delete"
+    }
+  ],
+  "questions": [
+    "Which benefits have a delivery target that future sessions cannot cover?",
+    "Which past sessions still need reconciliation?",
+    "Which programmes have overdue reports and unreconciled sessions?",
+    "Which active participants have no recorded benefit in thirty days?",
+    "Which delivery records need their ACNC retention date reviewed?",
+    "Which people received benefits after their last accuracy check became stale?",
+    "Which past sessions have no recorded deliveries?",
+    "How many distinct participants received each benefit, without adding unlike units?",
+    "Which closed enrolments still have delivery evidence to retain?",
+    "Which staff own both an overdue programme review and an overdue report?"
+  ]
+}

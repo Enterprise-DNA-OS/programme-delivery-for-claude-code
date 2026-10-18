@@ -1,11 +1,53 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "funder-report",
+    "title": "Programme delivery evidence pack",
+    "for_each": "select id,name from programmes order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Programme",
+        "sql": "select name,owner,jurisdiction,review_on from programmes where id=$1"
+      },
+      {
+        "title": "Delivery totals by benefit",
+        "sql": "select b.name,b.unit,b.target_units,coalesce(sum(d.units),0) as delivered_units from benefits b left join sessions s on s.benefit_id=b.id left join deliveries d on d.session_id=s.id and d.status='delivered' where b.programme_id=$1 group by b.id order by b.name",
+        "note": "Different units are never combined. These are recorded outputs, not proof of social outcomes."
+      },
+      {
+        "title": "Reporting milestones",
+        "sql": "select name,due_on,status,evidence from milestones where programme_id=$1 order by due_on"
+      }
+    ]
+  },
+  {
+    "name": "session-register",
+    "title": "Session reconciliation record",
+    "for_each": "select id,name from sessions order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Session",
+        "sql": "select session,scheduled_on,owner,capacity_units,delivered_units,unit,status from v_session_roster where id=$1"
+      },
+      {
+        "title": "Recorded deliveries",
+        "sql": "select pt.name as participant,d.units,d.evidence,d.status from deliveries d join enrolments e on e.id=d.enrolment_id join participants pt on pt.id=e.participant_id where d.session_id=$1 order by pt.name",
+        "note": "Private operator paperwork. Check against the original signed register."
+      }
+    ]
+  },
+  {
+    "name": "retention-review",
+    "title": "Delivery evidence retention review",
+    "for_each": "select id,name from programmes order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Retention dates",
+        "sql": "select source_id,participant,delivered_on,retain_until,evidence,status from v_delivery_ledger where programme_id=$1 order by retain_until",
+        "note": "Review statutory, contract and privacy requirements together. This report does not authorise disposal."
+      }
     ]
   }
 ]

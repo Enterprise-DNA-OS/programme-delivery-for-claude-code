@@ -1,13 +1,39 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Programme Delivery for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Programme delivery this week",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Programme reviews",
+        "sql": "select source_id,name,owner,review_on from programmes where status='active' order by review_on"
+      },
+      {
+        "title": "Upcoming sessions",
+        "sql": "select programme,session,scheduled_on,owner,capacity_units,unit from v_session_roster where status='planned' and scheduled_on>=current_date order by scheduled_on"
+      }
+    ]
+  },
+  {
+    "name": "capacity",
+    "title": "Benefit capacity and delivery",
+    "sections": [
+      {
+        "title": "Targets by benefit and unit",
+        "sql": "select programme,benefit,unit,target_units,delivered_units,future_capacity_units from v_benefit_capacity order by programme,benefit"
+      }
+    ]
+  },
+  {
+    "name": "attention",
+    "title": "Work needing attention",
+    "sections": [
+      {
+        "title": "Overdue work",
+        "sql": "select * from v_attention order by due_on"
+      },
+      {
+        "title": "Record checks",
+        "sql": "select * from v_compliance order by rule"
       }
     ]
   }

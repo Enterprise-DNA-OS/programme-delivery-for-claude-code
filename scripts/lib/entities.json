@@ -1,0 +1,226 @@
+{
+  "programmes": {
+    "required": [
+      "source_id",
+      "name",
+      "jurisdiction",
+      "owner",
+      "review_on"
+    ],
+    "dates": [
+      "review_on"
+    ],
+    "bools": [
+      "acnc_registered"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "jurisdiction",
+      "acnc_registered",
+      "owner",
+      "status",
+      "review_on"
+    ],
+    "refs": {},
+    "numbers": []
+  },
+  "benefits": {
+    "refs": {
+      "programme_id": "programmes"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "programme_id",
+      "unit",
+      "target_units"
+    ],
+    "numbers": [
+      "target_units"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "programme_id",
+      "unit",
+      "target_units",
+      "status"
+    ],
+    "dates": [],
+    "bools": []
+  },
+  "participants": {
+    "required": [
+      "source_id",
+      "name",
+      "owner",
+      "retention_review_on"
+    ],
+    "dates": [
+      "accuracy_checked_on",
+      "retention_review_on"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "status",
+      "accuracy_checked_on",
+      "retention_review_on",
+      "owner",
+      "accuracy_evidence"
+    ],
+    "refs": {},
+    "numbers": [],
+    "bools": []
+  },
+  "enrolments": {
+    "refs": {
+      "programme_id": "programmes",
+      "participant_id": "participants"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "programme_id",
+      "participant_id",
+      "starts_on"
+    ],
+    "dates": [
+      "starts_on",
+      "ends_on"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "programme_id",
+      "participant_id",
+      "starts_on",
+      "ends_on",
+      "status",
+      "outcome"
+    ],
+    "numbers": [],
+    "bools": []
+  },
+  "sessions": {
+    "refs": {
+      "benefit_id": "benefits"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "benefit_id",
+      "scheduled_on",
+      "capacity_units",
+      "owner"
+    ],
+    "dates": [
+      "scheduled_on"
+    ],
+    "numbers": [
+      "capacity_units"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "benefit_id",
+      "scheduled_on",
+      "capacity_units",
+      "owner",
+      "status",
+      "outcome"
+    ],
+    "bools": []
+  },
+  "deliveries": {
+    "refs": {
+      "enrolment_id": "enrolments",
+      "session_id": "sessions"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "enrolment_id",
+      "session_id",
+      "delivered_on",
+      "units",
+      "evidence",
+      "retain_until"
+    ],
+    "dates": [
+      "delivered_on",
+      "retain_until"
+    ],
+    "numbers": [
+      "units"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "enrolment_id",
+      "session_id",
+      "delivered_on",
+      "units",
+      "evidence",
+      "retain_until",
+      "status",
+      "outcome"
+    ],
+    "bools": []
+  },
+  "milestones": {
+    "refs": {
+      "programme_id": "programmes"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "programme_id",
+      "due_on",
+      "owner"
+    ],
+    "dates": [
+      "due_on",
+      "completed_on"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "programme_id",
+      "due_on",
+      "owner",
+      "status",
+      "evidence",
+      "completed_on"
+    ],
+    "numbers": [],
+    "bools": []
+  },
+  "notes": {
+    "refs": {
+      "programme_id": "programmes"
+    },
+    "required": [
+      "source_id",
+      "name",
+      "programme_id",
+      "recorded_on",
+      "summary",
+      "owner"
+    ],
+    "dates": [
+      "recorded_on"
+    ],
+    "fields": [
+      "source_id",
+      "name",
+      "programme_id",
+      "recorded_on",
+      "summary",
+      "owner"
+    ],
+    "numbers": [],
+    "bools": []
+  }
+}
